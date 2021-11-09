@@ -1,3 +1,4 @@
+import { Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
@@ -13,32 +14,30 @@ const Users = () => {
   }, []);
   return (
     <Layout>
-      <table className="table table-striped table-sm">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Header</th>
-            <th scope="col">Header</th>
-            <th scope="col">Header</th>
-            <th scope="col">Header</th>
-          </tr>
-        </thead>
-        <tbody>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>#</TableCell>
+            <TableCell>Name</TableCell>
+            <TableCell>Email</TableCell>
+            <TableCell>Actions</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
           {users.map((user) => {
             return (
-              <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>
+              <TableRow key={user.id}>
+                <TableCell>{user.id}</TableCell>
+                <TableCell>
                   {user.first_name} {user.last_name}
-                </td>
-                <td>{user.email}</td>
-                <td>placeholder</td>
-                <td>text</td>
-              </tr>
+                </TableCell>
+                <TableCell>{user.email}</TableCell>
+                <TableCell></TableCell>
+              </TableRow>
             );
           })}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     </Layout>
   );
 };
