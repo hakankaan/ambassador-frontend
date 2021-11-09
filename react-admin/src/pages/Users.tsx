@@ -1,26 +1,6 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Navigate } from "react-router";
 import Layout from "../components/Layout";
 
 const Users = () => {
-  const [ redirect, setRedirect ] = useState(false)
-
-  useEffect(() => {
-    (
-      async () => {
-        try {
-          const { data } = await axios.get("user");
-  
-          console.log(data);
-        } catch (error) {
-          setRedirect(true)
-        }
-      }
-    )()
-  }, [])
-
-  if (redirect) return <Navigate to="/login" />
 
   return (
     <Layout>
