@@ -5,6 +5,7 @@ import Users from "./pages/Users";
 import Register from "./pages/Register";
 import axios from "axios";
 import { RedirectToUsers } from "./components/RedirectToUsers";
+import Links from "./pages/Links";
 
 axios.defaults.baseURL = "http://localhost:8000/api/admin/"
 axios.defaults.withCredentials = true
@@ -19,6 +20,7 @@ function App() {
           <Route path="/users" element={<Users />} />
           <Route path="/login" element={<Login />}  />
           <Route path="/register" element={<Register />}  />
+          <Route path="/users/:id/links" element={<Links />} />
         </Routes>
       </BrowserRouter>
     </div>
