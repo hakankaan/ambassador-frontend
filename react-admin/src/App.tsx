@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import axios from "axios";
 
 axios.defaults.baseURL = "http://localhost:8000/api/admin/"
+axios.defaults.withCredentials = true
 
 function App() {
 
