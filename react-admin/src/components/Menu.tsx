@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 
 const Menu = () => {
@@ -13,6 +12,11 @@ const Menu = () => {
             <li className="nav-item">
               <NavLink to="/users" className="nav-link" aria-current="page">
                 Users
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/products" className="nav-link" aria-current="page">
+                Products
               </NavLink>
             </li>
           </ul>
