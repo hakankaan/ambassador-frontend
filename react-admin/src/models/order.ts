@@ -4,6 +4,6 @@ export interface Order {
     id: number;
     name: string;
     email: string;
-    total: string;
+    total: number;
     order_items: OrderItem[];
 }
