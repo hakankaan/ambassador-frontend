@@ -14,6 +14,8 @@ import Profile from "./pages/Profile";
 axios.defaults.baseURL = "http://localhost:8000/api/admin/";
 axios.defaults.withCredentials = true;
 
+
+
 function App() {
     return (
         <div className="App">

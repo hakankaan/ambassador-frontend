@@ -1,9 +1,12 @@
 import { Button, TextField } from "@mui/material";
 import axios from "axios";
-import { ChangeEvent, SyntheticEvent, useEffect, useState } from "react";
+import { ChangeEvent, Dispatch, SyntheticEvent, useEffect, useState } from "react";
+import { connect } from "react-redux";
 import Layout from "../components/Layout";
+import { User } from "../models/user";
+import { setUser } from "../redux/actions/setUserAction";
 
-const Profile = () => {
+const Profile = (props: any) => {
     const [firstName, setFirstName] = useState<string>("");
     const [lastName, setLastName] = useState<string>("");
     const [email, setEmail] = useState<string>("");
@@ -11,30 +14,27 @@ const Profile = () => {
     const [passwordConfirm, setPasswordConfirm] = useState<string>("");
 
     useEffect(() => {
-        (async () => {
-            const { data } = await axios.get("user");
-
-            setFirstName(data.first_name);
-            setLastName(data.last_name);
-            setEmail(data.email);
-        })();
-    }, []);
+        setFirstName(props.user.first_name);
+        setLastName(props.user.last_name);
+        setEmail(props.user.email);
+    }, [props.user]);
 
     const infoSubmit = async (e: SyntheticEvent) => {
-        e.preventDefault()
-        await axios.put("users/info", {
+        e.preventDefault();
+        const {data} = await axios.put("users/info", {
             first_name: firstName,
             last_name: lastName,
-            email
-        })
-    }
+            email,
+        });
+        props.setUser(data)
+    };
     const passwordSubmit = async (e: SyntheticEvent) => {
-        e.preventDefault()
+        e.preventDefault();
         await axios.put("users/password", {
             password,
-            password_confirm: passwordConfirm
-        })
-    }
+            password_confirm: passwordConfirm,
+        });
+    };
 
     return (
         <Layout>
@@ -102,4 +102,11 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+export default connect(
+    (state: { user: User }) => ({
+        user: state.user,
+    }),
+    (dispatch: Dispatch<any>) => ({
+        setUser: (user: User) => dispatch(setUser(user)),
+    })
+)(Profile);
