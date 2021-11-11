@@ -12,7 +12,7 @@ import {
 import axios from "axios";
 import { ChangeEvent, MouseEvent, useEffect, useState } from "react";
 import Layout from "../../components/Layout";
-import { Product } from "../../models/products";
+import { Product } from "../../models/product";
 
 const Products = () => {
     const [products, setProducts] = useState<Product[]>([]);

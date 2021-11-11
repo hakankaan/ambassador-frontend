@@ -11,7 +11,7 @@ import axios from "axios";
 import { ChangeEvent, MouseEvent, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Layout from "../components/Layout";
-import { Link } from "../models/links";
+import { Link } from "../models/link";
 
 const Links = () => {
   const [links, setLinks] = useState<Link[]>([]);
